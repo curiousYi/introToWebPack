@@ -1,5 +1,6 @@
 // Import React
 import React from "react";
+import Notes from "./notes";
 
 // Import Spectacle Core tags
 import {
@@ -38,9 +39,11 @@ require("spectacle/lib/themes/default/index.css");
 
 const images = {
   city: require("../assets/city.jpg"),
+  graphSPAvsSST: require("../assets/graph-SPAvsSST.png"),
   kat: require("../assets/kat.png"),
   logo: require("../assets/formidable-logo.svg"),
-  markdown: require("../assets/markdown.png")
+  markdown: require("../assets/markdown.png"),
+  webpackLogo: require("../assets/webpack-logo.svg")
 };
 
 preloader(images);
@@ -57,6 +60,8 @@ export default class Presentation extends React.Component {
         <Deck transition={["zoom", "slide"]} transitionDuration={500}>
 
           <Slide transition={["zoom"]} bgColor="primary">
+            <Image src={images.webpackLogo} margin="0px auto 40px" height="293px"/>
+
             <Heading size={1} fit caps lineHeight={1} textColor="webpackBlue">
               Introduction to WebPack
             </Heading>
@@ -70,13 +75,26 @@ export default class Presentation extends React.Component {
           </Slide>
 
 
-          <Slide transition={["slide"]} bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
-            <Image src={images.kat.replace("/", "")} margin="0px auto 40px" height="293px"/>
-            <Heading size={2} caps fit textColor="primary" textFont="primary">
-              Wait what?
+          <Slide transition={["slide"]} bgColor="black" notes={Notes.slide2}>
+            <Image src={images.graphSPAvsSST} margin="0px auto 40px" height="350px"/>
+            <Heading size={2} lineHeight={1} textColor="primary" textFont="primary">
+              SPA vs SST
             </Heading>
           </Slide>
 
+          <Slide transition={["slide"]} bgColor="black" notes={Notes.slide3}>
+            <Image src={images.graphSPAvsSST} margin="0px auto 40px" height="350px"/>
+            <Heading size={2} lineHeight={1} textColor="primary" textFont="primary">
+              SPA vs SST
+            </Heading>
+          </Slide>
+
+          <Slide transition={["slide"]} bgColor="black" notes={Notes.slide2}>
+            <Image src={images.graphSPAvsSST} margin="0px auto 40px" height="350px"/>
+            <Heading size={2} lineHeight={1} textColor="primary" textFont="primary">
+              SPA vs SST
+            </Heading>
+          </Slide>
 
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
             <CodePane
