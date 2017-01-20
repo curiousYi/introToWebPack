@@ -38,11 +38,15 @@ require("spectacle/lib/themes/default/index.css");
 
 
 const images = {
+  browserifyLogo: require("../assets/browserify-logo.svg"),
+  bundlersLogo: require("../assets/bundlersLogo.png"),
   city: require("../assets/city.jpg"),
   graphSPAvsSST: require("../assets/graph-SPAvsSST.png"),
   kat: require("../assets/kat.png"),
   logo: require("../assets/formidable-logo.svg"),
   markdown: require("../assets/markdown.png"),
+  monstrousJS: require("../assets/monstrousJS.png"),
+  reasonableJS: require("../assets/reasonableJS.png"),
   webpackLogo: require("../assets/webpack-logo.svg")
 };
 
@@ -50,7 +54,8 @@ preloader(images);
 
 const theme = createTheme({
   primary: "#ffffff",
-  webpackBlue: "#7B9FE2"
+  webpackBlue: "#7B9FE2",
+  black: "#000000"
 });
 
 export default class Presentation extends React.Component {
@@ -75,25 +80,71 @@ export default class Presentation extends React.Component {
           </Slide>
 
 
-          <Slide transition={["slide"]} bgColor="black" notes={Notes.slide2}>
-            <Image src={images.graphSPAvsSST} margin="0px auto 40px" height="350px"/>
+          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide2}>
+            <Image src={images.graphSPAvsSST} margin="0px auto 40px" height="500px"/>
             <Heading size={2} lineHeight={1} textColor="primary" textFont="primary">
               SPA vs SST
             </Heading>
           </Slide>
 
-          <Slide transition={["slide"]} bgColor="black" notes={Notes.slide3}>
-            <Image src={images.graphSPAvsSST} margin="0px auto 40px" height="350px"/>
-            <Heading size={2} lineHeight={1} textColor="primary" textFont="primary">
-              SPA vs SST
-            </Heading>
+          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide3}>
+            <Image src={images.monstrousJS} margin="40px auto 40px auto" height="500px"/>
           </Slide>
 
-          <Slide transition={["slide"]} bgColor="black" notes={Notes.slide2}>
-            <Image src={images.graphSPAvsSST} margin="0px auto 40px" height="350px"/>
-            <Heading size={2} lineHeight={1} textColor="primary" textFont="primary">
-              SPA vs SST
-            </Heading>
+          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide4}>
+            <Image src={images.reasonableJS} margin="40px auto 40px auto" height="500px"/>
+          </Slide>
+
+
+          <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+            <Heading caps fit >Bundling</Heading>
+            <List>
+              <Appear><ListItem>What is bundling?</ListItem></Appear>
+              <Appear><ListItem>Answer: Bundling is the process of stitching together a group of modules (and their dependencies) into a single file (or group of files) in the correct order.</ListItem></Appear>
+              <Appear><ListItem>Problem: Let's say if you're using a non-native module system like CommonJS or AMD (even native module ES6 file formats). Browsers cannot interpret this? </ListItem></Appear>
+            </List>
+          </Slide>
+
+          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide6}>
+            <Heading caps fit textColor="webpackBlue">Bundlers</Heading>
+            <Layout>
+              <Fill>
+                <Image src={images.bundlersLogo} margin="0px auto 40px auto" height="500px"/>
+              </Fill>
+              <Fill>
+              <List>
+                  <Appear><ListItem>Module bundlers like browserify and webpack bundle and/or load your JS modules.</ListItem></Appear>
+                  <Appear><ListItem>They can have additional features like recompiling code after you make a change or source-maps</ListItem></Appear>
+              </List>
+              </Fill>
+            </Layout>
+          </Slide>
+
+
+          <Slide transition={["slide"]} bgColor="secondary" textColor="primary" notes={Notes.slide7}>
+            <Heading caps fit >Gulp vs Grunt vs Webpack vs Browserify</Heading>
+            <List>
+              <Appear><ListItem>What's the difference between them?</ListItem></Appear>
+              <Appear><ListItem>Grunt and Gulp are task runners (and they have their own individual differences). You use task runners to help with a larger build problem</ListItem></Appear>
+              <Appear><ListItem>Webpack and Browserify are package bundlers. Again they handle going through the dependencies (ie load order) and concatenating the JS files so that the file (or files) can be used in the browser.</ListItem></Appear>
+              <Appear><ListItem>Bundlers can do several things that task-runners do like transpile source code (e.g. babel).</ListItem></Appear>
+            </List>
+          </Slide>
+
+          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide6}>
+            <Heading caps fit textColor="webpackBlue">Bundlers</Heading>
+            <Layout>
+              <Fill>
+                <Image src={images.bundlersLogo} margin="0px auto 40px auto" height="500px"/>
+              </Fill>
+              <Fill>
+              <List>
+                  <Appear><ListItem>Module bundlers like browserify and webpack bundle and/or load your JS modules.</ListItem></Appear>
+                  <Appear><ListItem>They can have additional features like recompiling code after you make a change or source-maps</ListItem></Appear>
+                  <Appear><ListItem>Task Runners vs Bundlers</ListItem></Appear>
+              </List>
+              </Fill>
+            </Layout>
           </Slide>
 
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
@@ -104,6 +155,24 @@ export default class Presentation extends React.Component {
             />
           </Slide>
 
+          <Slide transition={["slide"]} bgColor="primary">
+            <Heading caps fit textColor="webpackBlue">Bundlers</Heading>
+            <Layout>
+              <Fill>
+                <Image src={images.bundlersLogo} margin="0px auto 40px auto" height="500px"/>
+              </Fill>
+              <Fill>
+              <List>
+                  <Appear><ListItem>Inline style based theme system</ListItem></Appear>
+                  <Appear><ListItem>Autofit text</ListItem></Appear>
+                  <Appear><ListItem>Flexbox layout system</ListItem></Appear>
+                  <Appear><ListItem>React-Router navigation</ListItem></Appear>
+                  <Appear><ListItem>PDF export</ListItem></Appear>
+                  <Appear><ListItem>And...</ListItem></Appear>
+              </List>
+              </Fill>
+            </Layout>
+          </Slide>
 
           <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
             <Appear fid="1">
