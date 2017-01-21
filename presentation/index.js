@@ -23,6 +23,9 @@ import {
   Text
 } from "spectacle";
 
+import CodeSlide from 'spectacle-code-slide';
+
+
 // Import image preloader util
 import preloader from "spectacle/lib/utils/preloader";
 
@@ -47,7 +50,8 @@ const images = {
   markdown: require("../assets/markdown.png"),
   monstrousJS: require("../assets/monstrousJS.png"),
   reasonableJS: require("../assets/reasonableJS.png"),
-  webpackLogo: require("../assets/webpack-logo.svg")
+  webpackLogo: require("../assets/webpack-logo.svg"),
+  magicGif: require("../assets/magicGif.gif")
 };
 
 preloader(images);
@@ -62,7 +66,7 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <Spectacle theme={theme}>
-        <Deck transition={["zoom", "slide"]} transitionDuration={500}>
+        <Deck transition={["zoom", "slide"]} transitionDuration={500} progress="none">
 
           <Slide transition={["zoom"]} bgColor="primary">
             <Image src={images.webpackLogo} margin="0px auto 40px" height="293px"/>
@@ -105,18 +109,16 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
 
+
           <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide6}>
-            <Heading caps fit textColor="webpackBlue">Bundlers</Heading>
-            <Layout>
-              <Fill>
-                <Image src={images.bundlersLogo} margin="0px auto 40px auto" height="500px"/>
-              </Fill>
-              <Fill>
+            <Heading caps textColor="webpackBlue">Bundlers</Heading>
+            <Layout margin="0px auto 40px auto" >
+              <Image src={images.bundlersLogo} margin="0px 50px auto auto" height="500px"/>
               <List>
                   <Appear><ListItem>Module bundlers like browserify and webpack bundle and/or load your JS modules.</ListItem></Appear>
                   <Appear><ListItem>They can have additional features like recompiling code after you make a change or source-maps</ListItem></Appear>
+                  <Appear><ListItem>Task Runners vs Bundlers</ListItem></Appear>
               </List>
-              </Fill>
             </Layout>
           </Slide>
 
@@ -131,29 +133,60 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
 
-          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide6}>
-            <Heading caps fit textColor="webpackBlue">Bundlers</Heading>
-            <Layout>
-              <Fill>
-                <Image src={images.bundlersLogo} margin="0px auto 40px auto" height="500px"/>
-              </Fill>
-              <Fill>
+          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide8}>
+            <Heading caps textColor="webpackBlue">Bundlers</Heading>
+            <Layout margin="0px auto 40px auto" >
+              <Image src={images.bundlersLogo} margin="0px 50px auto auto" height="500px"/>
               <List>
                   <Appear><ListItem>Module bundlers like browserify and webpack bundle and/or load your JS modules.</ListItem></Appear>
                   <Appear><ListItem>They can have additional features like recompiling code after you make a change or source-maps</ListItem></Appear>
                   <Appear><ListItem>Task Runners vs Bundlers</ListItem></Appear>
               </List>
-              </Fill>
             </Layout>
           </Slide>
 
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+            <Heading caps textColor="webpackBlue">Fundamentals</Heading>
+            <Layout margin="0px auto 40px auto" >
             <CodePane
               lang="jsx"
-              source={require("raw!../assets/deck.example")}
+              source={require("raw!../assets/code-examples/slide8config.js.example")}
+              margin="20px auto"
+              fit
+            />
+            <CodePane
+              lang="jsx"
+              source={require("raw!../assets/code-examples/slide8index.js.example")}
+              margin="20px auto"
+              fill
+            />
+            </Layout>
+            <Layout margin="0px auto 40px auto" >
+            <CodePane
+              lang="jsx"
+              source={require("raw!../assets/code-examples/slide8sum.js.example")}
               margin="20px auto"
             />
+            </Layout>
           </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={require("raw!../assets/exampleCode.js.example")}
+            ranges={[{
+              loc: [0, 1], title: "get template"
+            }, {
+              locs: [[2, 3], [9, 10]], title: "get some data"
+            }, {
+              loc: [3, 4], title: "clone content"
+            }, {
+              loc: [4, 8], title: "update elements"
+            }, {
+              loc: [8, 9], title: "append fragment"
+            }]}
+            showLineNumbers={false}
+          />
 
           <Slide transition={["slide"]} bgColor="primary">
             <Heading caps fit textColor="webpackBlue">Bundlers</Heading>
