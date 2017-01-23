@@ -47,11 +47,12 @@ const images = {
   graphSPAvsSST: require("../assets/graph-SPAvsSST.png"),
   kat: require("../assets/kat.png"),
   logo: require("../assets/formidable-logo.svg"),
+  magicGif: require("../assets/magicGif.gif"),
   markdown: require("../assets/markdown.png"),
   monstrousJS: require("../assets/monstrousJS.png"),
   reasonableJS: require("../assets/reasonableJS.png"),
-  webpackLogo: require("../assets/webpack-logo.svg"),
-  magicGif: require("../assets/magicGif.gif")
+  tooManyNetworkRequests: require("../assets/tooManyNetworkRequests.png"),
+  webpackLogo: require("../assets/webpack-logo.svg")
 };
 
 preloader(images);
@@ -77,99 +78,100 @@ export default class Presentation extends React.Component {
             <Heading textSize="1.5em" size={1} textColor="webpackBlue">
               by Yi Chao
             </Heading>
-            <Link href="https://github.com/FormidableLabs/spectacle">
+           {/* <Link href="https://github.com/FormidableLabs/spectacle">
               <Text bold caps textColor="webpackBlue">View on Github</Text>
-            </Link>
-             <Text textSize="1.5em" margin="20px 0px 0px" bold>REMOVE THIS TEXT </Text>
-          </Slide>
-
-
-          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide2}>
-            <Image src={images.graphSPAvsSST} margin="0px auto 40px" height="500px"/>
-            <Heading size={2} lineHeight={1} textColor="primary" textFont="primary">
-              SPA vs SST
-            </Heading>
+            </Link>*/}
           </Slide>
 
           <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide3}>
-            <Image src={images.monstrousJS} margin="40px auto 40px auto" height="500px"/>
+            <Layout>
+            <Image src={images.reasonableJS} margin="40px auto 40px auto" height="500px"/>
+            </Layout>
           </Slide>
 
           <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide4}>
-            <Image src={images.reasonableJS} margin="40px auto 40px auto" height="500px"/>
+            <Image src={images.tooManyNetworkRequests} height="800px"/>
           </Slide>
-
-
-          <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
-            <Heading caps fit >Bundling</Heading>
-            <List>
-              <Appear><ListItem>What is bundling?</ListItem></Appear>
-              <Appear><ListItem>Answer: Bundling is the process of stitching together a group of modules (and their dependencies) into a single file (or group of files) in the correct order.</ListItem></Appear>
-              <Appear><ListItem>Problem: Let's say if you're using a non-native module system like CommonJS or AMD (even native module ES6 file formats). Browsers cannot interpret this? </ListItem></Appear>
-            </List>
-          </Slide>
-
 
           <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide6}>
             <Heading caps textColor="webpackBlue">Bundlers</Heading>
             <Layout margin="0px auto 40px auto" >
               <Image src={images.bundlersLogo} margin="0px 50px auto auto" height="500px"/>
-              <List>
-                  <Appear><ListItem>Module bundlers like browserify and webpack bundle and/or load your JS modules.</ListItem></Appear>
-                  <Appear><ListItem>They can have additional features like recompiling code after you make a change or source-maps</ListItem></Appear>
-                  <Appear><ListItem>Task Runners vs Bundlers</ListItem></Appear>
-              </List>
-            </Layout>
-          </Slide>
-
-
-          <Slide transition={["slide"]} bgColor="secondary" textColor="primary" notes={Notes.slide7}>
-            <Heading caps fit >Gulp vs Grunt vs Webpack vs Browserify</Heading>
-            <List>
-              <Appear><ListItem>What's the difference between them?</ListItem></Appear>
-              <Appear><ListItem>Grunt and Gulp are task runners (and they have their own individual differences). You use task runners to help with a larger build problem</ListItem></Appear>
-              <Appear><ListItem>Webpack and Browserify are package bundlers. Again they handle going through the dependencies (ie load order) and concatenating the JS files so that the file (or files) can be used in the browser.</ListItem></Appear>
-              <Appear><ListItem>Bundlers can do several things that task-runners do like transpile source code (e.g. babel).</ListItem></Appear>
-            </List>
-          </Slide>
-
-          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide8}>
-            <Heading caps textColor="webpackBlue">Bundlers</Heading>
-            <Layout margin="0px auto 40px auto" >
-              <Image src={images.bundlersLogo} margin="0px 50px auto auto" height="500px"/>
-              <List>
-                  <Appear><ListItem>Module bundlers like browserify and webpack bundle and/or load your JS modules.</ListItem></Appear>
-                  <Appear><ListItem>They can have additional features like recompiling code after you make a change or source-maps</ListItem></Appear>
-                  <Appear><ListItem>Task Runners vs Bundlers</ListItem></Appear>
+              <List fit>
+                  <Appear><ListItem>What is bundling?</ListItem></Appear>
+                  <Appear><ListItem>Answer: Bundling is the process of stitching together a group of modules (and their dependencies) into a single file (or group of files) in the correct order.</ListItem></Appear>
+                  <Appear><ListItem>Popular Bundlers: Browserify, Webpack</ListItem></Appear>
               </List>
             </Layout>
           </Slide>
 
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
             <Heading caps textColor="webpackBlue">Fundamentals</Heading>
+            <CodePane
+            lang="jsx"
+            source={require("raw-loader!../assets/code-examples/fundamentals/webpack.config.js.example")}
+            margin="20px auto"
+            />
+          </Slide>
+
+
+          <Slide>
             <Layout margin="0px auto 40px auto" >
-            <CodePane
-              lang="jsx"
-              source={require("raw!../assets/code-examples/slide8config.js.example")}
-              margin="20px auto"
-              fit
-            />
-            <CodePane
-              lang="jsx"
-              source={require("raw!../assets/code-examples/slide8index.js.example")}
-              margin="20px auto"
-              fill
-            />
-            </Layout>
-            <Layout margin="0px auto 40px auto" >
-            <CodePane
-              lang="jsx"
-              source={require("raw!../assets/code-examples/slide8sum.js.example")}
-              margin="20px auto"
-            />
+            <Fill>
+              <Layout padding="0px auto 100px auto" >
+                <CodePane
+                  lang="jsx"
+                  source={require("raw-loader!../assets/code-examples/module_bundling/webpack.config.js.example")}
+                  padding="40px 40px 40px 40px"
+                />
+              </Layout>
+
+             {/* Having an empty list block until I figure out how to insert spaces*/}
+            </Fill>
             </Layout>
           </Slide>
 
+  {/*
+          <Slide>
+            <Layout margin="0px auto 40px auto" >
+            <Fill>
+              <Layout padding="0px auto 100px auto" >
+                <CodePane
+                  lang="jsx"
+                  source={require("raw-loader!../assets/code-examples/module_bundling/webpack.config.js.example")}
+                  padding="40px 40px 40px 40px"
+                />
+              </Layout>
+
+             {/* Having an empty list block until I figure out how to insert spaces*/}
+    {/*
+              <List>
+
+              </List>
+              <Layout padding="0px auto 40px auto" >
+                <CodePane
+                  lang="jsx"
+                  source={require("raw-loader!../assets/code-examples/code_splitting/webpack.config.js.example")}
+                  padding="40px 40px 40px 40px"
+                />
+              </Layout>
+            </Fill>
+
+             <Fill>
+              <List margin="0px auto 40px 40px">
+                  <Appear><ListItem>Inline style based theme system</ListItem></Appear>
+                  <Appear><ListItem>Autofit text</ListItem></Appear>
+                  <Appear><ListItem>Flexbox layout system</ListItem></Appear>
+                  <Appear><ListItem>React-Router navigation</ListItem></Appear>
+                  <Appear><ListItem>PDF export</ListItem></Appear>
+                  <Appear><ListItem>And...</ListItem></Appear>
+              </List>
+              </Fill>
+            </Layout>
+          </Slide>
+        */}
+
+          {/*
           <CodeSlide
             transition={[]}
             lang="js"
@@ -314,6 +316,8 @@ You can write inline images, [Markdown Links](http://commonmark.org), paragraph 
             </Heading>
             <Link href="http://www.formidablelabs.com"><Image width="100%" src={images.logo}/></Link>
           </Slide>
+
+        */}
 
         </Deck>
       </Spectacle>
