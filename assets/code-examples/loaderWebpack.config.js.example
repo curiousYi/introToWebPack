@@ -2,10 +2,10 @@
 module.exports = {
 
   entry: {
-    src: PATHS.src,
+    src: __dirname + '/src',
   },
   output: {
-    path: PATHS.build,
+    path: __dirname + '/build',
     filename: 'bundle.js',
   },
 

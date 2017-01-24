@@ -1,21 +1,19 @@
-# Spectacle Boilerplate
+# ChicagoJS Meetup - Intro to Webpack
+Introduction to webpack presentation for people with intermediate JS experience and some familiarity with Node.
 
-## Reference
+### To run presentation
+git clone repo + change into directory
 
-The Spectacle core API is available at [https://github.com/FormidableLabs/spectacle/blob/master/README.markdown](https://github.com/FormidableLabs/spectacle/blob/master/README.markdown).
+```sh
+$ npm install
+$ npm start
+```
 
-## Development
+Code Examples can be found @ https://github.com/curiousyi/webpackcodeexamples
 
-After downloading the boilerplate, your first order of business is to open terminal and run `npm install`
+### Thanks to
+* Stephen Grider    https://www.udemy.com/webpack-2-the-complete-developers-guide/learn/v4/overview
+* James Da Costa   http://jamesdacosta.com/webpack-under-the-hood/
+* Webpack Team
+* Many others
 
-Next, run `rm -R .git` to remove the existing version control.
-
-Then, to start up the local server, run `npm start`
-
-Open a browser and hit [http://localhost:3000](http://localhost:3000), and we are ready to roll
-
-## Build & Deployment
-
-Building the dist version of the project is as easy as running `npm run build`
-
-If you want to deploy the slideshow to surge, run `npm run deploy`

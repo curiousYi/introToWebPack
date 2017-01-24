@@ -46,6 +46,7 @@ const images = {
   egBasic: require("../assets/basic.png"),
   egLoader: require("../assets/loader.png"),
   egPlugin: require("../assets/plugins.png"),
+  esprima: require("../assets/esprima.png"),
   graphSPAvsSST: require("../assets/graph-SPAvsSST.png"),
   goodbye:require("../assets/goodBye.gif"),
   monstrousJS: require("../assets/monstrousJS.png"),
@@ -95,8 +96,8 @@ export default class Presentation extends React.Component {
             <Image src={images.tooManyNetworkRequests}  margin="0px 50px auto auto" height="500px"/>
               <List fit>
                   <Appear><ListItem>Bundling!</ListItem></Appear>
-                  <Appear><ListItem>Bundling is the process of stitching together a group of modules (and their dependencies) into a single file (or group of files) in the correct order.</ListItem></Appear>
-                  <Appear><ListItem>Other issues you have to be aware of in the bundling process: load dependency,
+                  <Appear><ListItem>Bundling is the process of stitching together a group of modules (and their dependencies) into a single file (or group of files).</ListItem></Appear>
+                  <Appear><ListItem>Issues you have to be aware of in the bundling process: load dependency,
                   AMD vs CommonJS, etc </ListItem></Appear>
                   <Appear><ListItem>Popular Bundlers: Browserify, Webpack</ListItem></Appear>
               </List>
@@ -105,21 +106,7 @@ export default class Presentation extends React.Component {
 
           <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide4}>
             <Layout>
-            <Image src={images.whatIsWebpack} margin="40px auto 40px auto" height="500px"/>
-            </Layout>
-          </Slide>
-
-
-          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide5}>
-            <Heading caps textColor="webpackBlue">Basic</Heading>
-            <Layout margin="0px auto 40px auto" >
-            <Image src={images.tooManyNetworkRequests}  margin="0px 50px auto auto" height="500px"/>
-              <List fit>
-                  <Appear><ListItem>Bundling is the process of stitching together a group of modules (and their dependencies) into a single file (or group of files) in the correct order.</ListItem></Appear>
-                  <Appear><ListItem>Other issues you have to be aware of in the bundling process: load dependency,
-                  AMD vs CommonJS, etc </ListItem></Appear>
-                  <Appear><ListItem>Popular Bundlers: Browserify, Webpack</ListItem></Appear>
-              </List>
+            <Image src={images.whatIsWebpack} margin="40px auto 40px auto" height="100%" width="100%"/>
             </Layout>
           </Slide>
 
@@ -134,6 +121,18 @@ export default class Presentation extends React.Component {
                 />
           </Slide>
 
+          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide3}>
+            <Heading textColor="webpackBlue" margin="0px" padding="0px 0px 20px 0px" size="2" > Bundling Overview </Heading>
+            <Layout margin="0px auto 40px auto" >
+            <List fit height="100%">
+                  <Appear><ListItem>Reads the index/entry file. Creates an Abstract Syntax Tree (AST) using a library called Esprima. </ListItem></Appear>
+                  <Appear><ListItem>Parses the AST and identifies all the associated dependencies.</ListItem></Appear>
+                  <Appear><ListItem>Resolve those dependencies/read those files. Repeat until no more depedencies are found</ListItem></Appear>
+              </List>
+            <Appear><Image src={images.esprima}  margin="0px 50px auto auto" height="100%"/></Appear>
+            </Layout>
+          </Slide>
+
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
             <Heading caps textColor="webpackBlue">Loaders</Heading>
                 <CodePane
@@ -143,22 +142,6 @@ export default class Presentation extends React.Component {
                 />
           </Slide>
 
-            <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code-examples/loaderWebpack.config.js.example")}
-            ranges={[{
-              loc: [16, 18], title: "Entry point for Webpack "
-            }, {
-              loc: [23, 31], output: "Loader"
-
-            },
-            {
-              loc: [18, 22], output: "Output file config"
-            }
-            ]}
-            showLineNumbers={true}
-          />
 
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
                 <CodePane
@@ -173,13 +156,34 @@ export default class Presentation extends React.Component {
             </Heading>
             <Markdown>
               {`
-* For big applications it's not efficient to put everything onto a signle file. Especially if some blocks
+* For big applications it's not efficient to put everything onto a single file. Especially if some blocks
 of code are only required under some situations.
 * Webpack can split your codebase into chunks which are loaded on demand.
-* Lets look at a specific use-case.
+* Lets look at a specific use-case where this becomes useful.
               `}
             </Markdown>
           </Slide>
+
+            <CodeSlide
+            transition={[]}
+            lang="js"
+            code={require("raw!../assets/code-examples/pluginsWebpack.config.js.example")}
+            ranges={[
+              {
+              loc: [0, 34], title: "Recap of what we covered so far"
+            },
+              {
+              loc: [3, 7], note: "Entry point for Webpack "
+            }, {
+              loc: [23, 31], note: "Loader"
+
+            },
+            {
+              loc: [18, 22], note: "Output file config"
+            }
+            ]}
+            showLineNumbers={true}
+          />
 
           <Slide transition={["spin", "zoom"]} bgColor="tertiary">
             <Layout>
@@ -188,6 +192,16 @@ of code are only required under some situations.
               </Fill>
 
             </Layout>
+          </Slide>
+
+         <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+                <CodePane
+                  lang="jsx"
+                  source={require("raw-loader!../assets/code-examples/advancedWebpackConfig.js.example")}
+                  fit
+                  showLineNumbers={true}
+                  height="100%"
+                />
           </Slide>
 
           <Slide transition={["spin", "zoom"]} bgColor="tertiary">
@@ -202,6 +216,8 @@ of code are only required under some situations.
               </List>
           </Slide>
 
+
+
           <Slide transition={["spin", "zoom"]} bgColor="tertiary">
             <Heading size={1} fit caps lineHeight={1} textColor="webpackBlue">
                 Acknowledgements
@@ -212,6 +228,7 @@ of code are only required under some situations.
   * Webpack Team
   * https://goo.gl/forms/pGnvQH9n17KotiQf2
   * https://github.com/curiousyi/introtowebpack
+  * Email: ychao021@gmail.com
             `}
           </Markdown>
           </Slide>
