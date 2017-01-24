@@ -144,11 +144,36 @@ export default class Presentation extends React.Component {
 
 
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+            <Heading caps textColor="webpackBlue">Plugins</Heading>
                 <CodePane
                   lang="jsx"
                   source={require("raw-loader!../assets/code-examples/pluginsWebpack.config.js.example")}
                 />
           </Slide>
+
+            <CodeSlide
+            transition={[]}
+            lang="js"
+            code={require("raw!../assets/code-examples/pluginsWebpack.config.js.example")}
+            ranges={[
+              {
+              loc: [0, 34], title: "Recap of what we covered so far"
+            },
+              {
+              loc: [3, 12], note: "Entry + Output"
+            },
+            {
+              loc: [12, 18], note: "Loader"
+            },
+            {
+              loc: [19, 31], note: "Plugin"
+            },
+            {
+              loc: [0, 34]
+            }
+            ]}
+            showLineNumbers={true}
+          />
 
            <Slide transition={["spin", "zoom"]} bgColor="tertiary">
             <Heading caps fit size={1} textColor="webpackBlue">
@@ -163,27 +188,6 @@ of code are only required under some situations.
               `}
             </Markdown>
           </Slide>
-
-            <CodeSlide
-            transition={[]}
-            lang="js"
-            code={require("raw!../assets/code-examples/pluginsWebpack.config.js.example")}
-            ranges={[
-              {
-              loc: [0, 34], title: "Recap of what we covered so far"
-            },
-              {
-              loc: [3, 7], note: "Entry point for Webpack "
-            }, {
-              loc: [23, 31], note: "Loader"
-
-            },
-            {
-              loc: [18, 22], note: "Output file config"
-            }
-            ]}
-            showLineNumbers={true}
-          />
 
           <Slide transition={["spin", "zoom"]} bgColor="tertiary">
             <Layout>
@@ -226,7 +230,7 @@ of code are only required under some situations.
             {`
   * Stephen Grider, James Da Costa, + many others
   * Webpack Team
-  * https://goo.gl/forms/pGnvQH9n17KotiQf2
+  * Survey: https://goo.gl/forms/pGnvQH9n17KotiQf2
   * https://github.com/curiousyi/introtowebpack
   * Email: ychao021@gmail.com
             `}
