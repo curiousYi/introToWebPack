@@ -43,16 +43,17 @@ require("spectacle/lib/themes/default/index.css");
 const images = {
   browserifyLogo: require("../assets/browserify-logo.svg"),
   bundlersLogo: require("../assets/bundlersLogo.png"),
-  city: require("../assets/city.jpg"),
+  egBasic: require("../assets/basic.png"),
+  egLoader: require("../assets/loader.png"),
+  egPlugin: require("../assets/plugins.png"),
   graphSPAvsSST: require("../assets/graph-SPAvsSST.png"),
-  kat: require("../assets/kat.png"),
-  logo: require("../assets/formidable-logo.svg"),
-  magicGif: require("../assets/magicGif.gif"),
-  markdown: require("../assets/markdown.png"),
+  goodbye:require("../assets/goodBye.gif"),
   monstrousJS: require("../assets/monstrousJS.png"),
   reasonableJS: require("../assets/reasonableJS.png"),
   tooManyNetworkRequests: require("../assets/tooManyNetworkRequests.png"),
-  webpackLogo: require("../assets/webpack-logo.svg")
+  vendorCode: require("../assets/vendorCode.png"),
+  webpackLogo: require("../assets/webpack-logo.svg"),
+  whatIsWebpack: require("../assets/what-is-webpack.png")
 };
 
 preloader(images);
@@ -83,242 +84,141 @@ export default class Presentation extends React.Component {
             </Link>*/}
           </Slide>
 
-          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide3}>
+          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide2}>
             <Layout>
             <Image src={images.reasonableJS} margin="40px auto 40px auto" height="500px"/>
             </Layout>
           </Slide>
 
-          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide4}>
-            <Image src={images.tooManyNetworkRequests} height="800px"/>
-          </Slide>
-
-          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide6}>
-            <Heading caps textColor="webpackBlue">Bundlers</Heading>
+          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide3}>
             <Layout margin="0px auto 40px auto" >
-              <Image src={images.bundlersLogo} margin="0px 50px auto auto" height="500px"/>
+            <Image src={images.tooManyNetworkRequests}  margin="0px 50px auto auto" height="500px"/>
               <List fit>
-                  <Appear><ListItem>What is bundling?</ListItem></Appear>
-                  <Appear><ListItem>Answer: Bundling is the process of stitching together a group of modules (and their dependencies) into a single file (or group of files) in the correct order.</ListItem></Appear>
+                  <Appear><ListItem>Bundling!</ListItem></Appear>
+                  <Appear><ListItem>Bundling is the process of stitching together a group of modules (and their dependencies) into a single file (or group of files) in the correct order.</ListItem></Appear>
+                  <Appear><ListItem>Other issues you have to be aware of in the bundling process: load dependency,
+                  AMD vs CommonJS, etc </ListItem></Appear>
                   <Appear><ListItem>Popular Bundlers: Browserify, Webpack</ListItem></Appear>
               </List>
             </Layout>
           </Slide>
 
+          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide4}>
+            <Layout>
+            <Image src={images.whatIsWebpack} margin="40px auto 40px auto" height="500px"/>
+            </Layout>
+          </Slide>
+
+
+          <Slide transition={["slide"]} bgColor="primary" notes={Notes.slide5}>
+            <Heading caps textColor="webpackBlue">Basic</Heading>
+            <Layout margin="0px auto 40px auto" >
+            <Image src={images.tooManyNetworkRequests}  margin="0px 50px auto auto" height="500px"/>
+              <List fit>
+                  <Appear><ListItem>Bundling is the process of stitching together a group of modules (and their dependencies) into a single file (or group of files) in the correct order.</ListItem></Appear>
+                  <Appear><ListItem>Other issues you have to be aware of in the bundling process: load dependency,
+                  AMD vs CommonJS, etc </ListItem></Appear>
+                  <Appear><ListItem>Popular Bundlers: Browserify, Webpack</ListItem></Appear>
+              </List>
+            </Layout>
+          </Slide>
+
+         <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+            <Heading caps textColor="webpackBlue">Basic Setup</Heading>
+                <CodePane
+                  lang="jsx"
+                  source={require("raw-loader!../assets/code-examples/basicWebpack.config.js.example")}
+                  padding="40px 40px 40px 40px"
+                  fit
+                  showLineNumbers={true}
+                />
+          </Slide>
+
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
-            <Heading caps textColor="webpackBlue">Fundamentals</Heading>
-            <CodePane
-            lang="jsx"
-            source={require("raw-loader!../assets/code-examples/fundamentals/webpack.config.js.example")}
-            margin="20px auto"
-            />
-          </Slide>
-
-
-          <Slide>
-            <Layout margin="0px auto 40px auto" >
-            <Fill>
-              <Layout padding="0px auto 100px auto" >
+            <Heading caps textColor="webpackBlue">Loaders</Heading>
                 <CodePane
                   lang="jsx"
-                  source={require("raw-loader!../assets/code-examples/module_bundling/webpack.config.js.example")}
-                  padding="40px 40px 40px 40px"
+                  source={require("raw-loader!../assets/code-examples/loaderWebpack.config.js.example")}
+                  margin="20px auto"
                 />
-              </Layout>
-
-             {/* Having an empty list block until I figure out how to insert spaces*/}
-            </Fill>
-            </Layout>
           </Slide>
 
-  {/*
-          <Slide>
-            <Layout margin="0px auto 40px auto" >
-            <Fill>
-              <Layout padding="0px auto 100px auto" >
-                <CodePane
-                  lang="jsx"
-                  source={require("raw-loader!../assets/code-examples/module_bundling/webpack.config.js.example")}
-                  padding="40px 40px 40px 40px"
-                />
-              </Layout>
-
-             {/* Having an empty list block until I figure out how to insert spaces*/}
-    {/*
-              <List>
-
-              </List>
-              <Layout padding="0px auto 40px auto" >
-                <CodePane
-                  lang="jsx"
-                  source={require("raw-loader!../assets/code-examples/code_splitting/webpack.config.js.example")}
-                  padding="40px 40px 40px 40px"
-                />
-              </Layout>
-            </Fill>
-
-             <Fill>
-              <List margin="0px auto 40px 40px">
-                  <Appear><ListItem>Inline style based theme system</ListItem></Appear>
-                  <Appear><ListItem>Autofit text</ListItem></Appear>
-                  <Appear><ListItem>Flexbox layout system</ListItem></Appear>
-                  <Appear><ListItem>React-Router navigation</ListItem></Appear>
-                  <Appear><ListItem>PDF export</ListItem></Appear>
-                  <Appear><ListItem>And...</ListItem></Appear>
-              </List>
-              </Fill>
-            </Layout>
-          </Slide>
-        */}
-
-          {/*
-          <CodeSlide
+            <CodeSlide
             transition={[]}
             lang="js"
-            code={require("raw!../assets/exampleCode.js.example")}
+            code={require("raw!../assets/code-examples/loaderWebpack.config.js.example")}
             ranges={[{
-              loc: [0, 1], title: "get template"
+              loc: [16, 18], title: "Entry point for Webpack "
             }, {
-              locs: [[2, 3], [9, 10]], title: "get some data"
-            }, {
-              loc: [3, 4], title: "clone content"
-            }, {
-              loc: [4, 8], title: "update elements"
-            }, {
-              loc: [8, 9], title: "append fragment"
-            }]}
-            showLineNumbers={false}
+              loc: [23, 31], output: "Loader"
+
+            },
+            {
+              loc: [18, 22], output: "Output file config"
+            }
+            ]}
+            showLineNumbers={true}
           />
 
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading caps fit textColor="webpackBlue">Bundlers</Heading>
-            <Layout>
-              <Fill>
-                <Image src={images.bundlersLogo} margin="0px auto 40px auto" height="500px"/>
-              </Fill>
-              <Fill>
-              <List>
-                  <Appear><ListItem>Inline style based theme system</ListItem></Appear>
-                  <Appear><ListItem>Autofit text</ListItem></Appear>
-                  <Appear><ListItem>Flexbox layout system</ListItem></Appear>
-                  <Appear><ListItem>React-Router navigation</ListItem></Appear>
-                  <Appear><ListItem>PDF export</ListItem></Appear>
-                  <Appear><ListItem>And...</ListItem></Appear>
-              </List>
-              </Fill>
-            </Layout>
+          <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+                <CodePane
+                  lang="jsx"
+                  source={require("raw-loader!../assets/code-examples/pluginsWebpack.config.js.example")}
+                />
           </Slide>
 
-          <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
-            <Appear fid="1">
-              <Heading size={1} caps fit textColor="primary">
-                Full Width
-              </Heading>
-            </Appear>
-            <Appear fid="2">
-              <Heading size={1} caps fit textColor="tertiary">
-                Adjustable Darkness
-              </Heading>
-            </Appear>
-            <Appear fid="3">
-              <Heading size={1} caps fit textColor="primary">
-                Background Imagery
-              </Heading>
-            </Appear>
-          </Slide>
-
-
-          <Slide transition={["zoom", "fade"]} bgColor="primary">
-            <Heading caps fit>Flexible Layouts</Heading>
-            <Layout>
-              <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Left
-                </Heading>
-              </Fill>
-              <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Right
-                </Heading>
-              </Fill>
-                 <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Right
-                </Heading>
-              </Fill>
-                 <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Right
-                </Heading>
-              </Fill>
-            </Layout>
-          </Slide>
-
-
-          <Slide transition={["slide"]} bgColor="black">
-            <BlockQuote>
-              <Quote>Wonderfully formatted quotes</Quote>
-              <Cite>Ken Wheeler</Cite>
-            </BlockQuote>
-          </Slide>
-
-
-          <Slide transition={["spin", "zoom"]} bgColor="tertiary">
-            <Heading caps fit size={1} textColor="primary">
-              Inline Markdown
+           <Slide transition={["spin", "zoom"]} bgColor="tertiary">
+            <Heading caps fit size={1} textColor="webpackBlue">
+              Code Splitting
             </Heading>
             <Markdown>
               {`
-![Markdown Logo](${images.markdown.replace("/", "")})
-
-You can write inline images, [Markdown Links](http://commonmark.org), paragraph text and most other markdown syntax
-* Lists too!
-* With ~~strikethrough~~ and _italic_
-* And lets not forget **bold**
+* For big applications it's not efficient to put everything onto a signle file. Especially if some blocks
+of code are only required under some situations.
+* Webpack can split your codebase into chunks which are loaded on demand.
+* Lets look at a specific use-case.
               `}
             </Markdown>
           </Slide>
 
+          <Slide transition={["spin", "zoom"]} bgColor="tertiary">
+            <Layout>
+              <Fill>
+              <Image src={images.vendorCode} height= "100%" width="100%"/>
+              </Fill>
 
-          <Slide transition={["slide", "spin"]} bgColor="primary">
-            <Heading caps fit size={1} textColor="tertiary">
-              Smooth
-            </Heading>
-            <Heading caps fit size={1} textColor="secondary">
-              Combinable Transitions
-            </Heading>
+            </Layout>
           </Slide>
 
-
-          <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
-            <List>
-              <Appear><ListItem>Inline style based theme system</ListItem></Appear>
-              <Appear><ListItem>Autofit text</ListItem></Appear>
-              <Appear><ListItem>Flexbox layout system</ListItem></Appear>
-              <Appear><ListItem>React-Router navigation</ListItem></Appear>
-              <Appear><ListItem>PDF export</ListItem></Appear>
-              <Appear><ListItem>And...</ListItem></Appear>
-            </List>
-          </Slide>
-
-
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={1} caps fit textColor="tertiary">
-              Your presentations are interactive
+          <Slide transition={["spin", "zoom"]} bgColor="tertiary">
+            <Heading textColor="webpackBlue">
+                Recap
             </Heading>
-            <Interactive/>
+
+              <List fit>
+                  <Appear><ListItem>Webpack is a popular module bundler for your static assets. It bundles your file sthrough a dependency graph</ListItem></Appear>
+                  <Appear><ListItem>Learned about the basic webpack config file, loaders, and plugins </ListItem></Appear>
+                  <Appear><ListItem>Went over Code-splitting but webpack has a ton of other features as well!</ListItem></Appear>
+              </List>
           </Slide>
 
-
-          <Slide transition={["spin", "slide"]} bgColor="tertiary">
-            <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
-              Made with love in Seattle by
+          <Slide transition={["spin", "zoom"]} bgColor="tertiary">
+            <Heading size={1} fit caps lineHeight={1} textColor="webpackBlue">
+                Acknowledgements
             </Heading>
-            <Link href="http://www.formidablelabs.com"><Image width="100%" src={images.logo}/></Link>
+          <Markdown>
+            {`
+  * Stephen Grider, James Da Costa, + many others
+  * Webpack Team
+  * https://goo.gl/forms/pGnvQH9n17KotiQf2
+  * https://github.com/curiousyi/introtowebpack
+            `}
+          </Markdown>
           </Slide>
 
-        */}
-
+          <Slide transition={["spin", "zoom"]} bgColor="tertiary">
+            <Image src={images.goodbye} margin="0px auto 40px" height="100%"/>
+          </Slide>
         </Deck>
       </Spectacle>
     );

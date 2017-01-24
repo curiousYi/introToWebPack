@@ -1,0 +1,19 @@
+
+module.exports = {
+
+  entry: {
+    src: PATHS.src,
+  },
+  output: {
+    path: PATHS.build,
+    filename: 'bundle.js',
+  },
+
+  module:{
+    rules: [
+    {
+      use: 'babel-loader',
+      test: /\.js$/
+    }]
+  }
+};
